@@ -1,0 +1,374 @@
+/*body {
+    font-size: 10px;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+    user-select: none;
+}
+
+body h1 {
+    font-size: 10px;
+    padding-bottom: 4px;
+    margin: 0;
+}
+
+body p {
+    margin: 0;
+}*/
+
+.description {
+    position: absolute;
+    right: 0;
+    width: 0;
+    height: 100%;
+    z-index: 3;
+    background-color: #fff;
+    color: #1a1a1a;
+    opacity: 1;
+    overflow: hidden;
+    text-align: center;
+    font-family: 'Roboto Condensed', sans-serif;
+    transition:  width 0.5s, padding 0.5s;
+    -webkit-transition:  width 0.5s, padding 0.5s;
+    -webkit-transition-timing-function: ease-in-out; 
+    transition-timing-function: ease-in-out;
+
+}
+
+.description-wrapper {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    display:table;
+    overflow:hidden;
+}
+
+.description-wrapper.expanded {
+    width: 800px;
+}
+
+.description.active {
+    width: 320px;
+    box-shadow: -6px 0 8px 0 rgba(0,0,0,0.2); 
+    padding: 10px;
+    transition:  width 1s;
+    -webkit-transition:  width 1s;
+}
+
+.description.expanded {
+    width: 0;
+    text-align: left;
+}
+
+.description.expanded.active {
+    width: 800px;
+    transition:  width 1s;
+    -webkit-transition:  width 1s;
+}
+
+.description-text {
+    opacity: 1;
+    color: #1a1a1a;
+    position: relative;
+    padding-bottom: 10px;
+    text-align: left;
+    z-index: 4;
+}
+
+.description-banner{
+    position:relative;
+    background-color: #1a1a1a;
+}
+
+.description-container{
+    position:relative;
+}
+
+.description-banner-text{
+    opacity: 1;
+    color: #fff;
+    position: relative;
+    text-align: left;
+    z-index: 4;
+}
+
+.description h1 {
+    font-size: 25px;
+    padding: 5px;
+}
+
+.description h3 {
+    font-size: 12px;
+    margin: 0;
+    line-height: 12px;
+    padding: 5px;
+}
+
+.description p {
+    text-align: left;
+    padding-left: 5px;
+    line-height: 1.25;
+}
+
+.cluster-population{
+    font-weight: bold;
+}
+
+.description-media {
+    border: 1px solid black;
+    background-color: gray;
+    bottom: 60px;
+    position: absolute;
+    height: 150px;
+    width: 290px;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+.description-media.large {
+    height: 300px;
+    width: 500px;
+    right: 10px;
+}
+
+#container_sketch1{
+    height: 150px;
+    width: 300px;
+    padding-bottom: 10px;
+}
+
+.svg-container{
+    width: 300px;
+    position: relative;
+}
+
+#streetview-container{
+    position: relative;
+    display: table-row;
+    bottom: 0;
+    width:300px;
+    height:100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.cluster-population,
+.cluster-score,
+.cluster-radar {
+    text-align: left;
+    top: 0px;
+    left: 0px;
+}
+
+.bar rect {
+  fill: #a7a7a7;
+  /*fill: rgba(105, 170, 176, 0.5);*/
+}
+
+.bar text {
+  fill: #000;
+  font: 10px sans-serif;
+}
+
+.line {
+  fill: none;
+  stroke: #000;
+  stroke-width: 0.5px;
+}
+
+.axis text{
+    font: 10px sans-serif;
+    opacity: 0.7;
+}
+
+.axis path,
+.axis line{
+    fill: none;
+    stroke: rgba(100, 100, 100, 1);
+    shape-rendering: crispEdges;
+}
+
+.histo-line-pop,
+.histo-line-score {
+  fill: none;
+  stroke: rgba(254, 72, 48, 1);
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.histo-line-text-pop,
+.histo-line-text-score {
+    fill: rgba(254, 72, 48, 1);
+    font-size: 12px;
+}
+
+.histo-outline {
+    fill: none;
+    stroke: rgba(100, 100, 100, 1);
+    stroke-width: 0.5px;  
+}
+
+.histo-fill{
+    fill: rgba(100, 100, 100, 0.35);
+}
+
+.marker {
+    display: block;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    fill: #fff;
+}
+
+
+dl {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  width: 300px;
+  overflow: visible;
+}
+dl dt {
+  flex: 0 0 50%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+dl dd {
+  flex:0 0 50%;
+  margin-left: auto;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+*:focus {
+    outline: none;
+}
+
+
+#loader{
+  background: url(../images/loaderslow.gif) center no-repeat #fff;
+  height:100%;
+}
+
+.legend{
+    position: absolute;
+    width:180px;
+    height:150px;
+    margin:5px;
+    background-color: #fff;
+    opacity:95%;
+    font-family: 'Roboto Condensed', sans-serif;
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: rgba(0,0,0,0.2);
+    box-shadow:0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 3;
+}
+
+#city-dropdown{
+    position: relative;
+    display: block;
+   /* left: calc(10% - 20px);
+    left: -webkit-calc(10% - 20px);
+    left: -moz-calc(10% - 20px);*/  
+    
+    padding: 10px;
+}
+
+.dropdown-btn {
+    background-color: #1a1a1a;
+    color: white;
+    text-align: left;
+    font-family: 'Roboto Condensed', sans-serif;
+    padding: 6px 16px;
+    font-size: 16px;
+    width: 160px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content li {
+    color: black;
+    padding: 6px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    display: block;
+    cursor: pointer
+}
+
+#city-dropdown:hover .dropdown-content {
+    display: block;-c
+}
+.dropdown-content li:hover {
+    background-color: rgba(0,0,0, 0.2);
+}
+
+#cell-legends ul{
+    position:relative;
+    margin-bottom: 10px;
+    padding: 10px;
+    list-style: none;
+}
+
+#cell-legends ul li p{
+    display: block;
+    position:absolute;
+    left:30px;
+    text-align: center;
+    font-size: 12px;
+    list-style: none;
+}
+
+#cell-legends ul li span.cell-label{
+    display: block;
+    position:absolute;
+    left:10px;
+    height: 15px;
+    width: 15px;
+}
+
+/*#cell-legends ul li span.cell-btn{
+    display: block;
+    position:absolute;
+    right:10px;
+    height: 15px;
+    width: 15px;
+}*/
+
+
+.close {
+      position: absolute;
+      right: 32px;
+      top: 32px;
+      width: 32px;
+      height: 32px;
+      opacity: 0.3;
+      display: none;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}

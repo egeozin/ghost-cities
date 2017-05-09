@@ -1,0 +1,7 @@
+node_modules/
+migrate.js
+.DS_Store
+secret.json
+*.pyc
+app.yaml
+_docker-compose.yml

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ghost Cities</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/map_style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/slick/slick.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/animate.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
+
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.js"
+      integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+      crossorigin="anonymous"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>-->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    
+
+    <!-- Js -->
+    <!-- I am not so sure of these (Ege) -->
+    <script src="javascripts/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="javascripts/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+     <!-- || -->
+
+    <script type="text/javascript" src="javascripts/vendor/scrolloverflow.js"></script>
+
+    <script src="javascripts/fullpage.fadingEffect.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/jquery.fullpage.min.css"/>
+    <script type="text/javascript" src="javascripts/jquery.fullpage.extensions.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/simple-sidebar.css">
+   
+
+    <script src="javascripts/bootstrap.min.js"></script>
+    <script src="javascripts/plugins.js"></script>
+    <script src="javascripts/min/waypoints.min.js"></script>
+    <script src="javascripts/jquery.counterup.js"></script>
+
+</head>
+<body>
+    <!-- <div id="set-height"></div>
+    <p id="time"></p> -->
+
+    <!--
+    <div id="new-navbar-button">
+
+    <div class="navbar-header" >
+        <button type="button" id="navbar-button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+    </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#intro1">Introduction</a></li>
+                <li><a href="#mapview">Map View</a></li>
+                <li><a href="#carousel">Videos</a></li>
+                <li><a href="#press">Press</a></li>
+                <li><a href="#info1">About</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    -->
+
+
+
+    <div id="header-container">
+       <!--  <div id ='header-title'>
+        Ghost Cities
+        </div>
+
+ -->    
+        <div id="logos-container">
+            <a class ='header-icons' href="http://civicdatadesignlab.org/" target="_blank"><img src="images/cddl_logo_red.png"></a>
+            <a  class ='header-icons' href="http://web.mit.edu/" target="_blank"><img src="images/mitlogo_red.png"></a>
+            <a class="header-icons" id="stl_logo" href="https://stl.mit.edu/" target="_blank"><img src="images/stl_logo_small_red.png"></a>
+        </div>
+    </div>
+
+   
+
+     <div class="video-container">
+
+        <video loop id="v0" tabindex="0" preload="auto">
+            <!-- <source type="video/webm; codecs=&quot;vp9&quot;" src="http://www.graphicarto.com/video/introvideo_vimeo_2.webm"></source> -->
+            <!-- <source type="video/ogg; codecs=&quot;theora, vorbis&quot;" src="http://www.html5rocks.com/tutorials/video/basics/Chrome_ImF.ogv"></source> -->
+            <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="images/ghostcities_website.mov"></source>
+            <p>Sorry, your browser does not support the &lt;video&gt; element.</p>
+        </video>
+
+
+    </div>
+
+
+    <div id="wrapper">
+
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+                <li>
+                    <a href="#intro1">Introduction</a>
+                </li>
+                <li>
+                    <a href="#mapview">Map View</a>
+                </li>
+                <li>
+                    <a href="#carousel">Videos</a>
+                </li>
+                <li>
+                    <a href="#press">Press</a>
+                </li>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <li>
+                    <a href="#credits">People</a>
+                </li>
+            </ul>
+        </div>
+
+
+    <div id="page-content-wrapper">
+
+        <div id="menu-button-container">
+            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Menu</a>
+        </div>
+    
+    <div class="section-holder" id='fullpage'>
+
+
+    
+        <section class="section" id="home-id" data-anchor="home">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12 col-md-offset-0">
+                  <div id="opening-block" class="block">
+                    <h1 id="opening-title" class="animated fadeIn">Ghost Cities of China</h1>
+                    <p id="opening-subtitle" class="animated fadeIn">Identifying urban risk through social media data</p>
+                    <div id="opening-logos">
+                        <img src="images/cddl_logo_black.png" style="margin-right: 9px;" height="30">
+                        <img src="images/mitlogo_black.png" style="margin-left: 9px;" height="30">
+                        <img src="images/stl_logo_small_black.png" style="margin-left:9px;" height="30">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+
+            <!-- Slider Start -->
+
+        <section class='section' id="intro1-id" data-anchor="intro1">
+            <!-- <div id="intro-1" > -->
+                <div class="container">
+                    <div id="intro1-texts" class="row">
+                      <div class="col-md-6 col-sm-12">
+                        <div  class="block">
+                          <p class="intro-1-text-left">In recent years the Chinese real estate market has been slowing down in many second, third, and fourth-tier cities causing vacant or underused housing developments to proliferate, often due to government subsidized overbuilding.</p>
+         <!--        <br> -->
+                        </div>
+                    </div><!-- .col-md-7 close -->
+                  </div>
+                </div>
+           <!-- </div> -->
+        </section>
+
+        <section class='section' id="intro2-id" data-anchor="intro2">
+
+               
+                  <div class="container">
+                    <div id="intro2-texts" class="row">
+                      <div class="col-md-6 col-sm-12">
+                        <div  class="block">
+                          <p class="intro-2-text-left">In recent years the Chinese real estate market has been slowing down in many second, third, and fourth-tier cities causing vacant or underused housing developments to proliferate, often due to government subsidized overbuilding.</p>
+         <!--        <br> -->
+                        </div>
+                    </div><!-- .col-md-7 close -->
+                    <div class="col-md-6 col-sm-12">
+                      <div class="block">
+                        <p class="intro-2-text-right">Whole cities lay vacant as do smaller housing developments littered across cities. </p>
+                        <p class="intro-2-text-right">Mapping these "Ghost Cities" exposes weaknesses in metropolitan and regional real estate markets, showing the risk of investing in these markets.</p>
+                      </div>
+                    </div><!-- .col-md-5 close -->
+                  </div>
+                </div>
+        </section>
+
+
+        <section class='section' id="map-id" data-anchor="mapview">
+            <div class = 'map-section'>
+                <div id="map">
+                    <div class = "description">
+                        <div class = "description-wrapper">
+                            <div class= "description-banner">
+                                <h3 class = "description-banner-text banner-name"></h3>
+                                <h1 class = "description-banner-text cluster-name"></h1>
+                            </div>
+                            <div class="description-container">
+                                <p class = "cluster-county"></p>
+                                <p class = "cluster-type"></p>
+                                <p class = "cluster-population"></p>
+                            </div>
+                           <!--  <div class = 'svg-container'>
+                                <svg id = 'popHisto' width="300" height="120"></svg>
+                                <div class = 'svg-overlay'>
+                                    <h3 class = 'cluster-population'></h3>
+                                </div>
+                            </div> -->
+                            <div class= "description-banner">
+                                <h3 class = "description-banner-text cluster-radar"></h3>
+                            </div>
+
+                            <div class = 'svg-container'>
+                                <div class="radarChart"></div>
+                            </div>
+
+                            <div class= "description-banner">
+                                <h3 class = "description-banner-text cluster-score"></h3>
+                            </div>
+
+                            <div class = 'svg-container'>
+                                <svg id = 'scoreHisto' width = '300' height="120"></svg>
+                            </div>
+
+                            <div class= "description-banner">
+                                <h3 class = "description-banner-text ground-truth"></h3>
+                            </div>
+                            
+                            
+                            <div class = "close"></div>
+                            
+                            <!-- <div id ='streetview-container'>
+                                <h3> Site View </h3>
+                                <div id='loader'></div>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <div class = "legend">
+                        <div id="city-dropdown">
+                            <button class="dropdown-btn">
+                                <span id="btn-current"></span>
+                                <span id="btn-arrow">&#9660;</span>
+                            </button>
+                            <div class="dropdown-content">
+                                <li id="changchun-selector" class="city-btn">Changchun</li>
+                                <li id="chengdu-selector" class="city-btn">Chengdu</li>
+                                <li id="hangzhou-selector" class="city-btn">Hangzhou</li>
+                                <li id="shenyang-selector" class="city-btn">Shenyang</li>
+                                <li id="tianjin-selector" class="city-btn">Tianjin</li>
+                                <li id="xian-selector" class="city-btn">Xi'an</li>
+                            </div>
+                        </div>
+                        <div id="cell-legends">
+                            <ul class="legend-line">
+                                <li><span class="cell-label" style="background:rgba(254, 9, 1, 1);"></span></li>
+                                <li><p>Ghost City Cells</p></li>
+                            </ul>
+                            <ul class="legend-line">
+                                <li><span class="cell-label" style="background:rgba(176, 218, 228, 1);"></span></li>
+                                <li><p>Other Residential Cells</p></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+            </div>
+        </section>
+
+        <!--
+        <section class='section' id="videos" data-anchor="video1">
+            <IMG SRC="../images/video1.png" ALT="some text" WIDTH="100%" HEIGHT="auto">
+        </section>
+        <section class='section' id="videos" data-anchor="video2">
+            <IMG SRC="../images/video2.png" ALT="some text" WIDTH="100%" HEIGHT="auto">
+        </section>
+        <section class='section' id="videos" data-anchor="video3">
+            <IMG SRC="../images/video3.png" ALT="some text" WIDTH="100%" HEIGHT="auto">
+        </section>
+        <section class='section' id="videos" data-anchor="video4">
+            <IMG SRC="../images/video4.png" ALT="some text" WIDTH="100%" HEIGHT="auto">
+        </section>
+        <section class='section' id="videos" data-anchor="video5">
+            <IMG SRC="../images/video5.png" ALT="some text" WIDTH="100%" HEIGHT="auto">
+        </section> -->
+
+
+        <section class='section' id="videos" data-anchor="carousel" >
+
+            <div id="carousel-block">
+
+            <div id="first-clickable-map">
+                <button id="first-map-button">Click me!</button>
+            </div>
+
+            <div id="second-clickable-map">
+                <button id="second-map-button">Click me Again</button>
+            </div>
+
+            <div id="new-carousel">
+                <div>
+                    <img src="../images/video1.png" alt="some text" >
+                </div>
+                <div>
+                    <img src="../images/video2.png" alt="some text" >
+                </div>
+                <div>
+                    <img src="../images/video3.png" alt="some text"  >
+                </div>
+                <div>
+                    <img src="../images/video2.png" alt="some text"  >
+                </div>
+                <div>
+                    <img src="../images/video3.png" alt="some text"  >
+                </div>
+            </div>
+
+            </div>
+
+        </section>
+
+        <section class='section' id="press1" data-anchor="press" >
+
+        <div class="navbar-friendly-container">
+
+        <div class="container">
+
+            <div class="row">
+            <!-- col-md-offset-6 in the middle -->
+              <div class="col-md-6 col-sm-12">
+                <h2>Publications</h2>
+              </div>
+            </div>
+
+            <div class="row">
+                <!-- col-md-offset-4 in the middle-->
+                <div class="col-md-2 col-sm-12">
+                  <div class="block">
+                    <h4>
+                      March, 2017
+                    </h4>
+                  </div>
+                </div>
+          
+                <div class="col-md-6 col-sm-12">
+                    <div class="block">
+          
+                    <h4><a href ="https://www.dropbox.com/s/k0g201wuhwoh755/GhostCities_CUPUM_final.pdf?dl=0">Ghost Cities of China: Identifying Urban Vacancy through Social Media Data (working paper) </a>
+                    </h4>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="row">
+                <!-- col-md-offset-4 in the middle--> 
+                <div class="col-md-2 col-sm-12">
+                    <div class="block">
+                    <h4>
+                     March, 2017
+                    </h4>
+                    </div>
+                </div>
+          
+                <div class="col-md-6 col-sm-12">
+                    <div class="block">
+          
+                    <h4><a href ="https://www.dropbox.com/s/ixrais1p3e3mt11/segregationpaper.docx?dl=0">A Tale of Two Cities in China (working paper) </a>
+                    </h4>
+                    </div>
+                </div>
+
+            </div> 
+
+        </div>
+
+        </div>
+
+        </section>
+
+        <section class='section' id="about-section" data-anchor="
+        about" >
+
+            <div class="navbar-friendly-container">
+
+            <div id="first-about" class="container">
+              <div class="row">
+                <div class="col-md-3  col-sm-12">
+                  <div class="block">
+                    <div class="section-title">
+                      <h2>Ghost Cities of China</h2>
+                    </div>
+                    <p>Ghost Cities of China explores the question of Chinese resdiential       underutilization through social media data.  The project highlights the power of opensource data in discovering areas of risk in China. </p>
+                    <!-- <br> -->
+                    <p>Identifying these areas can have an impact on Chinese real estate investors, planners, and individuals who plan to make home purchases in the future.</p>
+                  </div>
+                </div><!-- .col-md-7 close -->
+                <div class="col-md-9 col-sm-12">
+                  <div class="block">
+                    <img src="images/newconstruction_2.png" class="img-responsive" alt="Img">
+                  </div>
+                </div><!-- .col-md-5 close -->
+              </div>
+            </div>
+
+            <hr class="divider"></hr>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 col-sm-12">
+                  <div class="block">
+                    <img src="images/cities_data.png" class="img-responsive" alt="Img">
+                  </div>
+                </div><!-- .col-md-5 close -->
+                <div class="col-md-3 col-sm-12">
+                  <div class="block">
+                    <div class="section-title">
+                      <h2>Data Collection</h2>
+                    </div>
+                    <p>We collected data for 22 different second and third tier cities across China in order to create a model that is applicable for most major cities.  We collected information from social media sites such as Dianping, Weibo, RenRen, and Baidu.</p>
+                  </div>
+                </div><!-- .col-md-7 close -->
+                
+              </div>
+            </div>
+
+            <hr class="divider"></hr>
+
+            <div class="container">
+              <div class="row">
+                
+                <div class="col-md-7 col-sm-12">
+                  <div class="block">
+                    <div class="section-title">
+                      <h2>Amenities Score</h2>
+                    </div>
+                    <p>From Dianping data, which is similar to Yelp, we created an 'amenities score' that calculates score for residential areas in a city based on their accessibility to standards amenities for daily life such as schools, hospitals, restaurants, and grocery stores. </p>
+                  </div>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                  <div class="block">
+                    <img src="images/GC_amenities.png" class="img-responsive" alt="Img">
+                  </div>
+                </div><!-- .col-md-5 close -->
+              </div>
+            </div>
+
+            <hr class="divider"></hr>
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-5 col-sm-12">
+                  <div class="block">
+                    <img src="images/developers3.png" class="img-responsive"  alt="Img">
+                  </div>
+                </div><!-- .col-md-5 close -->
+                <div class="col-md-7 col-sm-12">
+                  <div class="block">
+                    <div class="section-title">
+                      <h2>Ground Truthing</h2>
+                    </div>
+                    <p>After we created the model, we went to China to verify our results by visting our Ghost City sites that resulted from the model.  We also talked to different stakeholders such as planners, academics, and developers to understand the conditions from each party's perspective.
+                    </p>
+                  </div>
+                </div><!-- .col-md-7 close -->
+                
+              </div>
+            </div>
+
+            </div>
+
+
+        </section>
+
+
+        <section class='section' id="people" data-anchor="credits" >
+
+            <div id="credits-section" class="navbar-friendly-container">
+
+            <div class="container">
+               <div class="row">
+               <!-- col-md-offset-3 -->
+                <div class="col-md-6 col-sm-12">
+                  <h2>Project Team</h2>
+                </div>
+              </div>
+
+              <div class="row">
+              <!-- col-md-offset-3 -->
+                <div class="col-md-3 col-sm-12">
+                  <div class="block">
+                    
+                      <h4>Sarah Williams</h4>
+                      <p> Principal Investigator </p>
+                   
+                  </div>
+                </div><!-- .col-md-5 close -->
+                <div class="col-md-3 col-sm-12">
+                  <div class="block">
+                    
+                      <h4>Wenfei Xu</h4>
+                      <p>Project Lead </p>
+                      <h4>Shin-bin Tan</h4>
+                      <p>Research and Data Analysis</p>
+                      <h4>Michael Foster</h4>
+                      <p>Database Management</p>
+                    
+                   
+                  </div>
+                </div>
+
+                 <!-- .col-md-7 close -->
+                <div class="col-md-3 col-sm-12">
+                  <div class="block">
+                    <!-- <div class="section-title"> -->
+                      <h4>Xinhui Li</h4>
+                      <p>Web Development</p>
+                      <h4>Zhekun Xiong</h4>
+                      <p>Data Analysis</p>
+              
+                  </div>
+                </div><!-- .col-md-5 close -->
+                <div id="credits-previous" class="row">
+                    <!-- col-md-offset-3 -->
+                  <div class="col-md-9 col-sm-12">
+                    <div class="block">
+                      
+                        <h4><i>Previous</i></h4>
+                        <p>Changping Chen, Xudong Sun, Dalma Foldesi, Amber Guo, Elena Vanz</p>
+                    </div>
+                  </div><!-- .col-md-5 close -->
+                </div>
+        
+                <div  id="credits-thanks" class="row">
+                <!-- col-md-offset-3 -->
+                  <div class="col-md-6 col-sm-12">
+                    <h2>Thanks</h2>
+                  </div>
+                </div>
+                <div  id="credits-support" class="row">
+                <!-- col-md-offset-3 -->
+                  <div class="col-md-9 col-sm-12">
+                    <div class="block">
+                        <p>This project has been generously supported by a grant from the Sam Tak Lee Real Estate Entrepreneurship Lab in the Urban Planning and Real Estate Centers at MIT.  </p>
+        
+                        <p>We would also like to express special thanks to the people who halped us and provided us with valuable feedback on our in China: Huang Huaqing, Professor Long Ying, Yuan Shuai, Professor Zhuang Ning, the China Academy of Urban Planning and Design, the WSJ China Bureau, Northeastern University, the Shenyang Urban Planning department, Tong Biao, the Shenyang Real Estate Planning Committee Meeting, Vanke, China State Construction Company, Li Jijun, Yu, Yifan </p>             
+                    </div>
+                  </div><!-- .col-md-5 close -->
+                </div>
+        
+        
+            </div>
+
+            </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    
+    <script src="stylesheets/slick/slick.min.js"></script>
+    <script src="javascripts/scroll.js"></script>
+    <script src="javascripts/carousel.js"></script>
+    <script src="javascripts/resize.js"></script>
+    <script src="javascripts/sidebar.js"></script>
+    
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=cvftoNFvMtY0e8RY02GTXe6Y429grxaG"></script>
+    <script src="javascripts/baiduStreetview.js"></script> 
+    <script src="javascripts/mapscript.js"></script>
+    <script src='javascripts/radar_ghostcities.js'></script>
+    
+    <script src='javascripts/radarchart.js'></script>
+    <script src="javascripts/map_histogram.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ghost Cities</title>
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/map_style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
+
+    <script
+      src="https://code.jquery.com/jquery-1.4.2.min.js"
+      integrity="sha256-4joqTi18K0Hrzdj/wGed9xQOt/UuHuur+CeogYJkPFk="
+      crossorigin="anonymous"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>-->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <!-- <div id="set-height"></div>
+    <p id="time"></p> -->
+    <div id="header-container">
+        <p id="header-title">Ghost Cities</p>
+        <img src="images/cddl_logo_red.png" style="margin-right: 9px;" height="20">
+        <img src="images/mitlogo_red.png" style="margin-left: 9px;" height="20">
+    </div>
+
+    <video controls loop id="v0" tabindex="0" preload="auto">
+        <!-- <source type="video/webm; codecs=&quot;vp9&quot;" src="http://www.graphicarto.com/video/introvideo_vimeo_2.webm"></source> -->
+        <!-- <source type="video/ogg; codecs=&quot;theora, vorbis&quot;" src="http://www.html5rocks.com/tutorials/video/basics/Chrome_ImF.ogv"></source> -->
+        <source type="video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" src="images/Shenyang10_light.mp4"></source>
+      <p>Sorry, your browser does not support the &lt;video&gt; element.</p>
+    </video>
+
+    <div id='nav-buttons'>
+        <div class="round-btn" id="home-btn">HOME</div>
+        <div class="round-btn" id="map-btn">MAP</div>
+        <div class="round-btn" id="videos-btn">VIDEO</div>
+        <div class="round-btn" id="about-btn">ABOUT</div>
+        <div class="round-btn" id="papers-btn">PAPERS</div>
+    </div>
+
+    <div class="section-holder">
+        <section>
+            <div class="section-child">
+                <h1 class="intro-title">Ghost Cities</h1>
+        		<p class="intro-p">Beyond the Image</p>
+                <div id="photo-container" style="margin-top: 36px;">
+                    <img src="images/cddl_logo_black.png" style="margin-right: 9px;" height="42">
+                    <img src="images/mitlogo_black.png" style="margin-left: 9px;" height="42">
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="section-child">
+                <p class="intro-p">In recent years the Chinese real estate market has been slowing down in many second, third, and fourth-tier cities causing vacant or underused housing developments to proliferate, often due to government subsidized overbuilding.</p>
+            </div>
+        </section>
+        <section>
+            <div class="section-child">
+                <p class="intro-p">Whole cities lay vacant as do smaller housing developments littered across cities.</p>
+            </div>
+        </section>
+        <section>
+            <div class="section-child">
+                <p class="intro-p">Mapping these "Ghost Cities" exposes weaknesses in metropolitan and regional real estate markets, showing the risk of investing in these markets.</p>
+            </div>
+        </section>
+        <section>
+            <div class="section-child">
+                <p class="intro-p">This research project shows how "Big Data" can be used to identify these ghost developments and create a map of risk.</p>
+            </div>
+            <!-- <a href = "#map" class="round-button">MAP</a> -->
+        </section>
+    </div>
+
+    <div class = 'map-section'>
+        <div id="map">
+            <div class = "description">
+                <div class = "description-wrapper">
+                    <h1 class = "description-text cluster-name"></h1>
+                    <p class = "cluster-county"></p>
+                    <p class = "cluster-type"></p>
+                    <div class = 'svg-container'>
+                        <svg id = 'popHisto' width="300" height="120"></svg>
+                        <div class = 'svg-overlay'>
+                            <h3 class = 'cluster-population'></h3>
+                        </div>
+                    </div>
+                    <div class = 'svg-container'>
+                        <svg id = 'scoreHisto' width = '300' height="120"></svg>
+                        <div class = 'svg-overlay'>
+                            <h3 class = "cluster-score"></h3>
+                        </div>
+                    </div>
+                    <div class = 'svg-container'>
+                        <div class = 'svg-overlay'>
+                            <h3 class = "cluster-radar"></h3>
+                        </div>
+                        <div class="radarChart"></div>
+                    </div>
+                    
+                    <div class = "close"></div>
+                    <button class = 'btn-expand'>Ground Truth</button>
+
+                </div>
+            </div>
+        </div>
+        <div id="city-dropdown">
+            <button class="dropdown-btn">Chengdu</button>
+            <div class="dropdown-content">
+                <a href="/wuhan" id="wuhan-selector">Wuhan</a>
+                <a href="">Shenyang</a>
+                <a href="">Beijing</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-sections">
+        <section id="map-scroll">
+        </section>
+        <section id="videos">
+            <p>Videos</p>
+        </section>
+        <section id="about">
+            <p>About</p>
+        </section>
+        <section id="papers">
+            <p>Papers</p>
+        </section>
+    </div>
+
+    <script src="javascripts/mapscript.js"></script>
+    <script src='javascripts/radar_ghostcities.js'></script>
+    <script src='javascripts/radarchart.js'></script>
+    <script src='javascripts/baiduStreetview.js'></script>
+    <script src="javascripts/map_histogram.js"></script>
+    <script src="javascripts/scroll.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=eYf9sA6yVTFHlh9ytU4a0EYY"></script>
+</body>
+</html>
